@@ -4,8 +4,17 @@ part of 'homepage_bloc.dart';
 abstract class HomepageEvent {}
 
 class SendData extends HomepageEvent {
-  final String name;
-  final String job;
+  final String mobile;
+  final String firstName;
+  final String lastName;
+  final String password;
+  final String email;
 
-  SendData(this.name, this.job);
+  SendData(
+    this.mobile,
+    this.firstName,
+    this.lastName,
+    this.password,
+    this.email,
+  );
 }

@@ -1,73 +1,59 @@
+// To parse this JSON data, do
+//
+//     final homePageModel = homePageModelFromJson(jsonString);
+
 import 'dart:convert';
 
-class HomePageModel {
-  final String name;
-  final String job;
-  final String id;
-  final String createdAt;
+HomePageModel homePageModelFromJson(String str) => HomePageModel.fromJson(json.decode(str));
 
-  HomePageModel(
-    this.name,
-    this.job,
-    this.id,
-    this.createdAt,
+String homePageModelToJson(HomePageModel data) => json.encode(data.toJson());
+
+class HomePageModel {
+  final String? mobile;
+  final String? email;
+  final String? password;
+  final String? firstName;
+  final String? lastName;
+
+  final DeviceInfo? deviceInfo;
+
+  HomePageModel({
+    this.mobile,
+    this.email,
+    this.password,
+    this.firstName,
+    this.lastName,
+
+    this.deviceInfo,
+  });
+
+  factory HomePageModel.fromJson(Map<String, dynamic> json) => HomePageModel(
+    mobile: json["mobile"],
+    email: json["email"],
+    password: json["password"],
+    firstName: json["firstName"],
+    lastName: json["lastName"],
+
+    deviceInfo: json["deviceInfo"] == null ? null : DeviceInfo.fromJson(json["deviceInfo"]),
   );
 
-  HomePageModel copyWith({
-    String? name,
-    String? job,
-    String? id,
-    String? createdAt,
-  }) {
-    return HomePageModel(
-      name ?? this.name,
-      job ?? this.job,
-      id ?? this.id,
-      createdAt ?? this.createdAt,
-    );
-  }
+  Map<String, dynamic> toJson() => {
+    "mobile": mobile,
+    "email": email,
+    "password": password,
+    "firstName": firstName,
+    "lastName": lastName,
 
-  Map<String, dynamic> toMap() {
-    return {
-      'name': name,
-      'job': job,
-      'id': id,
-      'createdAt': createdAt,
-    };
-  }
+    "deviceInfo": deviceInfo?.toJson(),
+  };
+}
 
-  factory HomePageModel.fromMap(Map<String, dynamic> map) {
-    return HomePageModel(
-      map['name'] ?? '',
-      map['job'] ?? '',
-      map['id'] ?? '',
-      map['createdAt'] ?? '',
-    );
-  }
+class DeviceInfo {
+  DeviceInfo();
 
-  String toJson() => json.encode(toMap());
+  factory DeviceInfo.fromJson(Map<String, dynamic> json) => DeviceInfo(
+  );
 
-  factory HomePageModel.fromJson(String source) =>
-      HomePageModel.fromMap(json.decode(source));
-
-  @override
-  String toString() {
-    return 'HomePageModel(name: $name, job: $job, id: $id, createdAt: $createdAt)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-
-    return other is HomePageModel &&
-        other.name == name &&
-        other.job == job &&
-        other.id == id &&
-        other.createdAt == createdAt;
-  }
-
-  @override
-  int get hashCode {
-    return name.hashCode ^ job.hashCode ^ id.hashCode ^ createdAt.hashCode;
-  }
+  Map<String, dynamic> toJson() => {
+  };
 }

@@ -8,13 +8,19 @@ class SearchButtonBuilder extends StatelessWidget {
   const SearchButtonBuilder(
       {Key? key,
       required this.focusNode,
-      required this.name,
-      required this.job})
+      required this.firstName,
+      required this.email,
+      required this.password,
+      required this.mobile,
+      required this.lastName})
       : super(key: key);
 
   final FocusNode focusNode;
-  final TextEditingController name;
-  final TextEditingController job;
+  final TextEditingController firstName;
+  final TextEditingController email;
+  final TextEditingController mobile;
+  final TextEditingController password;
+  final TextEditingController lastName;
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +35,12 @@ class SearchButtonBuilder extends StatelessWidget {
             borderRadius: kBorderRadius,
           ),
         ),
-        onPressed: () => BlocProvider.of<HomepageBloc>(context)
-            .add(SendData(name.text, job.text)),
+        onPressed: () => BlocProvider.of<HomepageBloc>(context).add(SendData(
+            mobile.text,
+            firstName.text,
+            lastName.text,
+            password.text,
+            email.text)),
         child: Text(
           "Search",
           style: TextStyle(color: Colors.white, fontSize: kfontSize),

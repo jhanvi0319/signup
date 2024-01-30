@@ -13,19 +13,19 @@ class ListTileBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       title: Text(
-        data.name,
+        "data.email"!,
         style: const TextStyle(
             color: Colors.blue, fontSize: 40.00, fontWeight: FontWeight.bold),
       ),
       subtitle: Text(
-        data.job,
+        data.toString(),
         style: const TextStyle(
           color: Colors.grey,
           fontSize: 27.00,
         ),
       ),
       trailing: Text(
-        "ID: ${data.id}",
+        "ID: ${data.lastName}",
         style: const TextStyle(
             color: Colors.red, fontSize: 27.00, fontWeight: FontWeight.bold),
       ),

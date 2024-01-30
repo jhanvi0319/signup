@@ -21,8 +21,11 @@ class _HomePageState extends State<HomePage> {
   late FocusNode nameFocus;
   late FocusNode jobFocus;
   late FocusNode searchBtnFocus;
-  late TextEditingController nameController;
-  late TextEditingController jobController;
+  late TextEditingController firstNameController;
+  late TextEditingController mobileController;
+  late TextEditingController emailController;
+  late TextEditingController lastNameController;
+  late TextEditingController passwordController;
 
   @override
   void initState() {
@@ -30,8 +33,11 @@ class _HomePageState extends State<HomePage> {
     nameFocus = FocusNode();
     jobFocus = FocusNode();
     searchBtnFocus = FocusNode();
-    nameController = TextEditingController();
-    jobController = TextEditingController();
+    firstNameController = TextEditingController();
+    mobileController = TextEditingController();
+    emailController = TextEditingController();
+    lastNameController = TextEditingController();
+    passwordController = TextEditingController();
   }
 
   @override
@@ -39,8 +45,11 @@ class _HomePageState extends State<HomePage> {
     nameFocus.dispose();
     jobFocus.dispose();
     searchBtnFocus.dispose();
-    nameController.dispose();
-    jobController.dispose();
+    firstNameController.dispose();
+    mobileController.dispose();
+    emailController.dispose();
+    lastNameController.dispose();
+    passwordController.dispose();
     super.dispose();
   }
 
@@ -73,7 +82,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             InputField(
               focusNode: nameFocus,
-              textController: nameController,
+              textController: firstNameController,
               label: "Name",
               icons: const Icon(
                 Icons.person,
@@ -83,15 +92,39 @@ class _HomePageState extends State<HomePage> {
             HeightSpacer(myHeight: kSpacing),
             InputField(
               focusNode: jobFocus,
-              textController: jobController,
+              textController: lastNameController,
+              label: "lastName",
+              icons: const Icon(Icons.work, color: Colors.blue),
+            ),
+            HeightSpacer(myHeight: kSpacing),
+            InputField(
+              focusNode: jobFocus,
+              textController: emailController,
+              label: "Designation",
+              icons: const Icon(Icons.work, color: Colors.blue),
+            ),
+            HeightSpacer(myHeight: kSpacing),
+            InputField(
+              focusNode: jobFocus,
+              textController: mobileController,
+              label: "Designation",
+              icons: const Icon(Icons.work, color: Colors.blue),
+            ),
+            HeightSpacer(myHeight: kSpacing),
+            InputField(
+              focusNode: jobFocus,
+              textController: passwordController,
               label: "Designation",
               icons: const Icon(Icons.work, color: Colors.blue),
             ),
             HeightSpacer(myHeight: kSpacing),
             SearchButtonBuilder(
               focusNode: searchBtnFocus,
-              name: nameController,
-              job: jobController,
+              firstName: firstNameController,
+              email: emailController,
+              password: passwordController,
+              mobile: mobileController,
+              lastName: lastNameController,
             ),
           ],
         ),
